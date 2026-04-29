@@ -21,7 +21,7 @@ The monitored application is **NexTech** — a simulated e-commerce website sell
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 [![Architecture](Architecture.png)](Architecture.png)
 
@@ -96,7 +96,7 @@ monitoring-stack/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/monitoring-stack.git
+git clone https://github.com/AssyaELM/Monitoring-Infrastructure-Cloud.git
 cd monitoring-stack
 ```
 
