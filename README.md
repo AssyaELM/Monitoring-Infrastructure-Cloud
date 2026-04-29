@@ -23,7 +23,7 @@ The monitored application is **NexTech** — a simulated e-commerce website sell
 
 ##  Architecture
 
-[![Architecture](Architecture.png)](images/Architecture.png)
+![Architecture](images/Architecture.png)
 
 ---
 
@@ -202,8 +202,15 @@ All 13 containers should show `Up` status.
 | cAdvisor | **19792** | Docker container metrics |
 | MySQL | **14057** | Database performance metrics |
 | Redis | **763** | Cache performance metrics |
+---
+
+##  Visual Results
+###  Custom Python Exporter Dashboard
 ![Exporter](images/exporter.png)
+
+###  cAdvisor Dashboard
 ![cAdvisor](images/cadvisor.png)
+---
 
 ### Custom Dashboards (built from scratch with PromQL)
 
@@ -218,6 +225,7 @@ All 13 containers should show `Up` status.
 | Disk read | `rate(container_fs_reads_bytes_total{name!=""}[2m])` |
 | Disk write | `rate(container_fs_writes_bytes_total{name!=""}[2m])` |
 | Active containers | `count(container_last_seen{name!=""})` |
+---
 ![Containers Dash](images/contenurs.png)
 
 #### Dashboard 2 — NexTech Site Performance
@@ -231,6 +239,7 @@ Powered **exclusively** by the custom Python exporter:
 | Error rate | `sum(rate(http_requests_total{status_code!="200"}[5m])) / sum(rate(http_requests_total[5m])) * 100 or vector(0)` |
 | Requests per second | `rate(http_requests_total[5m])` |
 | Response size | `http_content_size_bytes` |
+---
 ![NexTech Site Dash](images/monitoringsite.png)
 ---
 
@@ -291,9 +300,18 @@ Every 10 seconds:
 | `Latence_Elevee` | P95 latency > 500ms | ⚠️ Warning | 2 min |
 
 Every triggered alert sends an **automatic email** via Alertmanager with the alert name, affected instance, current value, and detailed description.
-![Alert Rules](images/alertrules.png)
-![Alerts](images/alerte.png)
 ---
+
+##  Alert Visualization
+
+### Alert Rules 
+![Alert Rules](images/alertrules.png)
+
+---
+
+### Alert Mail 
+![Alerts](images/alerte.png)
+
 
 ##  Log Management (Loki + Promtail)
 
